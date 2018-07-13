@@ -6,6 +6,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-materialize": "^2.2.1",
+    "react-pdf": "^3.0.5",
     "react-scripts": "1.1.4"
   },
   "scripts": {
