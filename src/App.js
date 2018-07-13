@@ -61,7 +61,7 @@ handleFormSubmit = (e) => {
         <button type="submit">Submit</button>
         </form>
 
-      <h3 className='yellow-text'>Sunrise & Sunset</h3>
+      <h3 className='yellow-text'>Sunrise and Sunset</h3>
         {
           this.state.sunrise ? (
             <div className='Sunrise'>
