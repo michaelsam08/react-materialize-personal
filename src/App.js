@@ -36,17 +36,23 @@ class App extends Component {
     e.preventDefault();
     const city = this.state.city;
     const country = this.state.country;
-    const url = `https://api.openaq.org/v1/cities?country=${country}`;
+    const AQI = this.state.value;
+
+    const url = `https://api.openaq.org/v1/measurements?country=${country}&limit=10000`;
+    //const url = `https://api.openaq.org/v1/measurements`;
 
     fetch(url)
-      .then(res => res.json())
+      .then(respond => respond.json())
       .then(apiResult => {
+        debugger;
         const results = apiResult.results;
         const cityAQI = results.find(result => {
-          return result.city.toLowerCase() === city.toLowerCase();
+          console.log("CITY: ", result.city);
+          return result.city.toLowerCase().trim() === city.toLowerCase().trim();
         });
+
         this.setState({
-          AQI: cityAQI && cityAQI.count,
+          AQI: cityAQI && cityAQI.value,
           city: "",
           country: ""
         });
@@ -100,10 +106,9 @@ class App extends Component {
         <Slider>
           <Slide src={image1} color="blue" title="Cartagena Colombia.">
             Between 2016 and 2017 I lived in Bogota and Barranquilla Colombia.
-            It is a wonderful place.
           </Slide>
           <Slide src={image3} title="Ecuadorian Coast" placement="left">
-            I was able to spend 3 months working remotely there last year.
+            I was able to spend 3 months working remotely here last year.
           </Slide>
           <Slide src={image5} title="Michael Samara" placement="right">
             Enjoys working with Austin Coding Academy.
@@ -141,14 +146,7 @@ class App extends Component {
             >
               <Icon>account_circle</Icon>
             </Input>
-            <Input
-              type="email"
-              s={6}
-              label="Email"
-              validate
-              type="Email"
-              name="_replyto"
-            >
+            <Input type="email" s={6} label="Email" validate name="_replyto">
               <Icon>Email</Icon>
             </Input>
             <Button name="name" type="submit" value="send">
@@ -158,7 +156,7 @@ class App extends Component {
         </div>
         <div id="resume">
           <Document
-            file={MichaelSamaraDevRes}
+            file={MichaelSamaraDevResNow}
             onLoadSuccess={this.onDocumentLoad}
           >
             <Page pageNumber={pageNumber} />
