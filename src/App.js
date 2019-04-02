@@ -17,7 +17,7 @@ import image3 from "./images/olonfromclif.JPG";
 import image4 from "./images/sunset1.JPG";
 import image5 from "./images/profphoto.jpg";
 import { Document, Page } from "react-pdf";
-import MichaelSamaraDevRes from "./Docs/MichaelSamaraDevRes.pdf";
+import MichaelSamaraDevResNow from "./Docs/MichaelSamaraDevResNow.pdf";
 // added to import my resume in PDF format
 class App extends Component {
   state = {
